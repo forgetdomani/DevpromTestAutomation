@@ -30,6 +30,7 @@ public class LoginPage {
 			tbPassword.sendKeys(user.getPassword());
 			btLogin.click();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return;
 		}
 

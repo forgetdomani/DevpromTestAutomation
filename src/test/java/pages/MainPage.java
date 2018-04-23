@@ -35,6 +35,7 @@ public class MainPage {
 			new WebDriverWait(driver, 60).until(ExpectedConditions.visibilityOf(btStop));
 			btStop.click();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return;
 		}
 	}
@@ -55,6 +56,7 @@ public class MainPage {
 			new WebDriverWait(driver, 60).until(ExpectedConditions.elementToBeClickable(lkTestScenarios));
 			lkTestScenarios.click();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return;
 		}
 

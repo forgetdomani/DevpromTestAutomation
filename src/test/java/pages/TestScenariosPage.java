@@ -44,6 +44,7 @@ public class TestScenariosPage {
 			btSaveScenario.click();
 			new WebDriverWait(driver, 3);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return;
 		}
 	}
@@ -62,6 +63,7 @@ public class TestScenariosPage {
 			WebElement chb = scRow.findElement(By.tagName("input"));
 			chb.click();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return;
 		}
 	}
@@ -71,14 +73,15 @@ public class TestScenariosPage {
 			lsBulkModify.click();
 			driver.findElement(By.id("bulk-modify-actions")).findElement(By.linkText("Важность")).click();
 			new WebDriverWait(driver, 1000).ignoring(NoSuchElementException.class)
-			.until(ExpectedConditions.presenceOfElementLocated(By.id("Importance")));
-	new WebDriverWait(driver, 1000).until(
-			ExpectedConditions.visibilityOf(driver.findElement(By.id("Importance"))));
-	
+					.until(ExpectedConditions.presenceOfElementLocated(By.id("Importance")));
+			new WebDriverWait(driver, 1000)
+					.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("Importance"))));
+
 			Select listbox = new Select(driver.findElement(By.id("Importance")));
 			listbox.selectByVisibleText(severity);
 			driver.findElement(By.id("SubmitBtn")).click();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return;
 		}
 
@@ -99,15 +102,10 @@ public class TestScenariosPage {
 			Select listbox = new Select(driver.findElement(By.id("WikiPageImportance")));
 			WebElement option = listbox.getFirstSelectedOption();
 			String scSeverity = option.getText();
-			new WebDriverWait(driver, 1000).ignoring(NoSuchElementException.class)
-			.until(ExpectedConditions.presenceOfElementLocated(By.id("WikiPageCancelBtn")));
-	new WebDriverWait(driver, 1000).until(
-			ExpectedConditions.visibilityOf(driver.findElement(By.id("WikiPageCancelBtn"))));
-	new WebDriverWait(driver, 1000).until(ExpectedConditions
-			.elementToBeClickable(driver.findElement(By.id("WikiPageCancelBtn"))));
 			driver.findElement(By.id("WikiPageCancelBtn")).click();
 			return scSeverity;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return "";
 		}
 	}
